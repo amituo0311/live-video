@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>直播播放</title>
+  <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    video { width: 100%; height: auto; max-height: 100%; background: #000; }
+  </style>
+</head>
+<body>
+  <video id="videoElement" controls autoplay></video>
+
+  <script>
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById('videoElement');
+      var flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        url: 'https://live2.dktq4q.com/live/57437003_fc37db9c3c3f9df3df1ee66d95db2ada_nsd.flv'
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    } else {
+      alert("当前浏览器不支持 FLV 播放，请换 Chrome 或 Android 浏
